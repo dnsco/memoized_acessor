@@ -1,0 +1,16 @@
+I frequently find myself writing something along the lines of
+
+class Person
+	attr_writer :best_friend
+	def best_friend
+		@best_friend ||= do_expensive_stuff_to_figure_out_who_the_lucky_person_is
+	end
+end
+
+well now you can save a million keystrokes and a thousand lines of code by doing
+
+class Person
+	memoized_accessor(:best_friend) {do_expensive_stuff_to_figure_out_who_the_lucky_person_is}
+end
+
+It might be evil metaprogramming, but hey, "You can do it in RUBY!".
