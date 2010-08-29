@@ -1,5 +1,6 @@
-require 'lib/memoized_accessor'
 require 'wrong'
+$:.unshift File.join(File.dirname(__FILE__), 'lib/')
+require 'memoized_accessor'
 
 include Wrong::Assert
 
@@ -12,3 +13,8 @@ assert { m.michelle == 8 }
 
 m.michelle=10
 assert { m.michelle == 10 }
+
+assert { m.michelle! == 8}
+
+assert { m.michelle == 10 }
+
